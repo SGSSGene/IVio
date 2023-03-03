@@ -9,6 +9,7 @@
 #include "../zlib_ng_file_reader.h"
 
 static_assert(std::ranges::range<ivio::fasta::reader>, "reader must be a range (unittest)");
+static_assert(ivio::record_reader_c<ivio::fasta::reader>, "must fulfill the record_reader concept (unittest)");
 
 namespace ivio {
 
@@ -89,7 +90,5 @@ auto reader::next() -> std::optional<record_view> {
 void reader::close() {
     pimpl_.reset();
 }
-
-static_assert(record_reader_c<reader>);
 
 }
