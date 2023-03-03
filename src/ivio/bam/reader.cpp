@@ -64,7 +64,7 @@ struct reader_base<bam::reader>::pimpl {
             auto l_name = ivio::bgzfUnpack<uint32_t>(ptr);
             std::tie(ptr, size) = ureader.read(8 + l_name);
             if (size < 8 + l_name) throw std::runtime_error{"error reading entry " + std::to_string(i)};
-            auto l_ref  = ivio::bgzfUnpack<uint32_t>(ptr+4+l_name);
+            /*auto l_ref  = */ivio::bgzfUnpack<uint32_t>(ptr+4+l_name);
             //!TODO read name and save it somewhere
             ureader.dropUntil(8+l_name);
         }

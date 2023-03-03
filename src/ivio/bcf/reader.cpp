@@ -265,7 +265,7 @@ struct reader_base<bcf::reader>::pimpl {
 
         auto info = buffer.capture([&]() {
             for (size_t i{0}; i < size_t{n_info}; ++i) {
-                auto id = buffer.readInt();
+                /*auto id = */buffer.readInt();
                 auto a = buffer.readAny();
                 std::visit(overloaded{
                     [](nullptr_t) {},
@@ -280,7 +280,7 @@ struct reader_base<bcf::reader>::pimpl {
         });
         auto format = buffer.capture([&]() {
             for (size_t i{0}; i < size_t{n_fmt}; ++i) {
-                auto id = buffer.readInt();
+                /*auto id = */buffer.readInt();
                 auto [t, l] = buffer.readDescriptor();
                 buffer.iter += l*t*n_sample; // Jump over the data
             }
