@@ -6,7 +6,6 @@
 #include "../stream_reader.h"
 #include "../zlib_file_reader.h"
 #include "../zlib_mmap2_reader.h"
-#include "../zlib_ng_file_reader.h"
 
 static_assert(std::ranges::range<ivio::fasta::reader>, "reader must be a range (unittest)");
 static_assert(ivio::record_reader_c<ivio::fasta::reader>, "must fulfill the record_reader concept (unittest)");
