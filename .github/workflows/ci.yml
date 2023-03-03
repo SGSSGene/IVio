@@ -69,7 +69,7 @@ jobs:
           eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           sudo apt-get update -y
           sudo apt-get install -y build-essential
-          brew install --force-bottle fmt boost cmake ${{ matrix.brew_pkgs }} pkg-config
+          brew install --force-bottle fmt zlib boost cmake ${{ matrix.brew_pkgs }} pkg-config
           ${{ matrix.cxx }} --version
 
       - name: Tool versions
