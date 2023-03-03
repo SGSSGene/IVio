@@ -78,7 +78,8 @@ struct reader_base<vcf::reader>::pimpl {
             auto end = ureader.readUntil('\n', start);
             auto tableHeader = ureader.string_view(start, end);
             for (auto v : std::views::split(tableHeader, '\t')) {
-                genotypes.emplace_back(v.begin(), v.end());
+                auto cv = std::ranges::common_view{v}; // !WORKAROUND this conversion is for gcc10 and gcc11
+                genotypes.emplace_back(cv.begin(), cv.end());
             }
             if (genotypes.size() < 9) {
                 throw std::runtime_error("Header description line is invalid");
